@@ -28,16 +28,32 @@ The HTML report is written to `build/reports/tests/test/index.html`.
 | Chapter | Example | What it shows |
 |---|---|---|
 | 1 | [`SubscribeVsPublisher`](src/test/java/com/hamzajg/examples/reactive/chapter_1/SubscribeVsPublisher.java) | A `SubmissionPublisher` pushing items to a `Flow.Subscriber`, including the `request(n)` back-pressure contract |
+| 2 | [`MapFilterProcessor`](src/main/java/com/hamzajg/examples/reactive/chapter_2/MapFilterProcessor.java) | An operator written as a `Flow.Processor`: map then filter between publisher and subscriber, with downstream demand forwarded upstream |
+| 3 | [`BatchingSubscriber`](src/main/java/com/hamzajg/examples/reactive/chapter_3/BatchingSubscriber.java) | Back-pressure from the consumer's side: request two items, take two, ask for more, and a `cancel()` that stops delivery |
+| 4 | [`ErrorRecoveringProcessor`](src/main/java/com/hamzajg/examples/reactive/chapter_4/ErrorRecoveringProcessor.java) | Errors as part of the stream: `onError` passed through untouched, or turned into a fallback value plus completion |
 
 Each example is a JUnit test: it builds a small pipeline, drives it, and asserts
 what the subscriber received. That keeps the examples executable and makes a
 regression fail the build.
 
+The tests give `SubmissionPublisher` a *direct* executor (`Runnable::run`), so
+items are delivered on the submitting thread. That removes the sleeps and the
+`CountDownLatch` races a background executor would need, which is what lets the
+back-pressure chapter assert "exactly two items arrived so far".
+
 ## Layout
 
 ```
+src/main/java/com/hamzajg/examples/reactive/
+  chapter_2/MapFilterProcessor.java
+  chapter_3/BatchingSubscriber.java
+  chapter_4/ErrorRecoveringProcessor.java
 src/test/java/com/hamzajg/examples/reactive/
   chapter_1/SubscribeVsPublisher.java
+  chapter_2/MapFilterProcessorTest.java
+  chapter_3/BackpressureTest.java
+  chapter_4/ErrorHandlingTest.java
+  support/RecordingSubscriber.java
 build.gradle
 gradlew, gradle/wrapper/
 ```
