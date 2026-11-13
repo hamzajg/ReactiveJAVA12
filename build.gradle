@@ -7,12 +7,20 @@ version '1.0-SNAPSHOT'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(25)
     }
 }
 
 repositories {
     mavenCentral()
+}
+
+test {
+    // Test doubles live in src/test/java/.../support and carry no @Test methods.
+    // Gradle's test-class scanner cannot read Java 25 class files, so it stopped
+    // filtering them out and tried to run RecordingSubscriber as a test
+    // ("No runnable methods"). Excluding the package is explicit and version-safe.
+    exclude '**/support/**'
 }
 
 dependencies {
