@@ -43,5 +43,4 @@ ReactiveJAVA12/   (Gradle, single module, JDK 25 toolchain)
 ## Verification
 
 `sh gradlew test` → `build/reports/tests/test/index.html`. CI runs
-`sh gradlew build --no-daemon` on a JDK 17 launcher with the JDK 25
-toolchain auto-resolved.
+`sh gradlew build --no-daemon` on JDK 25 with the JDK 25 toolchain.

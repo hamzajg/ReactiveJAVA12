@@ -17,12 +17,13 @@ Verified 2026-11-13 against CI (`.github/workflows/ci.yml`) and README.
 
 | Task | Command |
 |---|---|
-| Build + test | `sh gradlew build --no-daemon` (CI: JDK 17 launcher) |
+| Build + test | `sh gradlew build --no-daemon` (CI: JDK 25) |
 | Tests only | `sh gradlew test` (or `./gradlew test` if executable) |
 | Test report | `build/reports/tests/test/index.html` |
 
-Requires: JDK to run Gradle (CI uses 17). **Compilation toolchain is JDK 25**
-(`build.gradle` → `java.toolchain.languageVersion = 25`), auto-resolved.
+Requires: JDK 25 to run Gradle and to compile. **Compilation toolchain is
+JDK 25** (`build.gradle` → `java.toolchain.languageVersion = 25`),
+auto-resolved.
 
 ## Architecture
 
@@ -61,11 +62,8 @@ build.gradle / gradlew(bat)
 ## Landmines
 
 - **Default branch is `master`, not `main`.**
-- JDK 17 launcher / JDK 25 toolchain split — don't "fix" the numbers.
+- The wrapper is 9.9.1 because older Gradle releases cannot run on JDK 25.
 - `RecordingSubscriber` in `support/` is shared test infra — reuse it.
-- Gradle 6.9.x-era wrapper with toolchain 25: `test { exclude '**/support/**' }`
-  may be needed if Gradle can't read v69 classes for filtering (seen in the
-  JDK-25 sweep) — check `build.gradle` test block before touching it.
 - Chapter 1's example lives in `src/test` (it's a test-only demo), others
   in `src/main` — match the existing placement.
 

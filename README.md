@@ -1,7 +1,7 @@
 # ReactiveJAVA12
 
 Hands-on examples for *Hands-On Reactive Programming with Java 12*, built on
-the JDK's own [Flow API](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/Flow.html)
+the JDK's own [Flow API](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/Flow.html)
 (`java.util.concurrent.Flow`).
 
 ## Requirements

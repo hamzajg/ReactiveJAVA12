@@ -24,9 +24,9 @@ the JDK's Flow API instead of a reactive library.
    mirrors the book's structure.
 5. **JUnit 4 only.** `junit:junit:4.12` — period-appropriate for the
    Java-12-era book. Rationale: consistency with the source material.
-6. **Gradle wrapper + JDK 25 toolchain.** Checked-in `gradlew`; compile
-   toolchain 25, CI launcher JDK 17. Rationale: fleet SDK standardisation
-   without burdening contributors.
+6. **Gradle wrapper + JDK 25 toolchain.** Checked-in `gradlew`; Gradle and
+   the compile toolchain both run on JDK 25. Rationale: fleet SDK
+   standardisation without burdening contributors.
 
 ## Consequences
 
