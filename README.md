@@ -6,8 +6,8 @@ the JDK's own [Flow API](https://docs.oracle.com/en/java/javase/25/docs/api/java
 
 ## Requirements
 
-- JDK 11 or newer (the examples use `var`, `List.of`, and the Flow API)
-- No Gradle install needed — the wrapper is checked in (Gradle 8.2)
+- JDK 25 (the examples use `var`, `List.of`, and the Flow API)
+- No Gradle install needed — the wrapper is checked in (Gradle 9.9.1)
 
 ## Running the tests
 

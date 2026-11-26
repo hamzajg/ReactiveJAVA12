@@ -26,3 +26,7 @@ jobs:
 
       - name: Build and test
         run: sh gradlew build --no-daemon
+
+      # Docs and Dockerfiles are allowed to claim Java 25 only; CI pins it.
+      - name: Docs claim Java 25
+        run: bash .github/scripts/check-java-version-docs.sh
